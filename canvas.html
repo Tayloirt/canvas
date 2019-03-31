@@ -42,7 +42,23 @@
 
     });
 
+    window.addEventListener('touchstart',function(e) {
+        isDrawing = true;
+        ctx.moveTo(e.clientX, e.clientY);// specifies the horizontal coordinate to be moved to and the vertical coordinate to be moved to
+        ctx.fillStyle = "red";// default red
+
+    });
+
     window.addEventListener('mousemove', function(e) {
+     if (isDrawing) { // checks if isDrawing is true, mouse is pressed
+        ctx.beginPath()
+        ctx.fill(); //fills the current drawing path
+        ctx.fillRect(e.clientX, e.clientY, 40, 40);//40 width by 40 height pixels
+
+         }
+         
+    });
+       window.addEventListener('touchmove', function(e) {
      if (isDrawing) { // checks if isDrawing is true, mouse is pressed
         ctx.beginPath()
         ctx.fill(); //fills the current drawing path
@@ -54,6 +70,11 @@
 
 
     window.addEventListener('mouseup', function(){
+
+        isDrawing = false;
+    });
+
+    window.addEventListener('touchend', function(){
 
         isDrawing = false;
     });
@@ -139,7 +160,7 @@
 
 
      }
-     window.addEventListener('keyup',function(e){ //Color Picker
+     window.addEventListener('keyup',function(e){ //Color Picker, Click the letter c to change the color using the color picker
              var color = document.getElementById("myColor").value;
              var stringColor = String(color);
              console.log(stringColor);
