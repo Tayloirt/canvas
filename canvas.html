@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            
+            canvas{
+
+                border: 1px solid #ccc;
+                background-color: #F5F5F5;
+
+              
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <input type="color" id="myColor"> 
+        <canvas id="canvas" width="800" height="450"></canvas>
+        <script type='text/javascript'>
+        
+        var x = document.getElementById("myColor");
+
+        var c = document.querySelector('canvas');
+        var ctx = c.getContext('2d');
+        var isDrawing;
+
+    window.addEventListener('mousedown',function(e) {
+        isDrawing = true;
+        ctx.moveTo(e.clientX, e.clientY);// specifies the horizontal coordinate to be moved to and the vertical coordinate to be moved to
+        ctx.fillStyle = "red";
+
+    });
+
+    window.addEventListener('mousemove', function(e) {
+     if (isDrawing) { // checks if isDrawing is true, mouse is pressed
+        ctx.beginPath()
+        ctx.fill(); //fills the current drawing path
+        ctx.fillRect(e.clientX, e.clientY, 40, 40);//40 width by 40 height pixels
+
+         }
+         
+    });
+
+
+    window.addEventListener('mouseup', function(){
+
+        isDrawing = false;
+    });
+
+    window.addEventListener('keyup',function(e){
+          
+            if (e.keyCode == 66){
+                //console.log("in the blue statment");
+                ctx.fillStyle = "blue";
+
+            }
+
+     }); 
+    window.addEventListener('keyup',function(e){
+            
+            if (e.keyCode == 71){
+                //console.log("in the green statment");
+                ctx.fillStyle = "green";
+
+            }
+
+     });
+    window.addEventListener('keyup',function(e){
+           
+            if (e.keyCode == 82){
+                //console.log("in the green statment");
+                ctx.fillStyle = "red";
+
+            }
+
+     });
+    window.addEventListener('keyup',function(e){
+            
+            if (e.keyCode == 89){
+                //console.log("in the green statment");
+                ctx.fillStyle = "yellow";
+
+            }
+
+     });
+
+    window.addEventListener('keyup',function(e){//up arrow increase size
+           
+            if ((isDrawing) && (e.keyCode == 38)){
+                console.log("in the up statment");
+                ctx.fillRect(e.clientX, e.clientY, 40, 75);
+
+            }
+
+     });
+
+    window.addEventListener('keyup',function(e){// down arrow decrease size
+           
+            if ((isDrawing) && (e.keyCode == 40)){
+                console.log("in the down statment");
+                ctx.fillRect(e.clientX, e.clientY, 40, 10);
+
+            }
+
+     });
+    window.addEventListener('keyup',function(e){ // clear canvas
+           
+            if (e.keyCode == 32){
+                //console.log("in the space statment");
+                ctx.clearRect(0, 0, c.width, c.height);
+                
+
+            }
+
+     });
+       
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
