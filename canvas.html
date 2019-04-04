@@ -9,8 +9,8 @@
             canvas{
 
                 border: 1px solid #ccc;
-                height: 80vh;
-                width: 80vw;
+               /* height: 80vh;
+                width: 80vw;*/
                 background-color: #F5F5F5;
 
               
@@ -20,14 +20,16 @@
     </head>
 
     <body>
-        <input type="color" id="myColor"> 
         <canvas id="canvas" width="800" height="450"></canvas>
+                <input type="color" id="myColor"> 
+
         <p id="demo"></p>
 
         
 
 
         <script type='text/javascript'>
+        var width =40;
         
         var x = document.getElementById("myColor");
 
@@ -53,7 +55,7 @@
      if (isDrawing) { // checks if isDrawing is true, mouse is pressed
         ctx.beginPath()
         ctx.fill(); //fills the current drawing path
-        ctx.fillRect(e.clientX, e.clientY, 40, 40);//40 width by 40 height pixels
+        ctx.fillRect(e.clientX, e.clientY, width, width);//40 width by 40 height pixels
 
          }
          
@@ -62,7 +64,7 @@
      if (isDrawing) { // checks if isDrawing is true, mouse is pressed
         ctx.beginPath()
         ctx.fill(); //fills the current drawing path
-        ctx.fillRect(e.clientX, e.clientY, 40, 40);//40 width by 40 height pixels
+        ctx.fillRect(e.clientX, e.clientY, width, width);//40 width by 40 height pixels
 
          }
          
@@ -120,7 +122,9 @@
            
             if ((isDrawing) && (e.keyCode == 38)){
                 console.log("in the up statment");
-                ctx.fillRect(e.clientX, e.clientY, 40, 75);
+                //ctx.fillRect(e.clientX, e.clientY, 40, 75);
+                width += 3;
+                console.log(width);
 
             }
 
@@ -130,7 +134,11 @@
            
             if ((isDrawing) && (e.keyCode == 40)){
                 console.log("in the down statment");
-                ctx.fillRect(e.clientX, e.clientY, 40, 10);
+               // ctx.fillRect(e.clientX, e.clientY, 40, 10);
+               width -= 3;
+              console.log(width);
+               
+
 
             }
 
@@ -172,13 +180,6 @@
             }
 
      });
-           
-          
-
-
-    
-
-       
 
 
 
