@@ -9,8 +9,9 @@
             canvas{
 
                 border: 1px solid #ccc;
-               /* height: 80vh;
-                width: 80vw;*/
+               /* width:  80%;
+                height: 80%;
+                */
                 background-color: #F5F5F5;
 
               
@@ -35,24 +36,32 @@
 
         var c = document.querySelector('canvas');
         var ctx = c.getContext('2d');
+        var clientX, clientY;
         var isDrawing;
 
     window.addEventListener('mousedown',function(e) {
         isDrawing = true;
         ctx.moveTo(e.clientX, e.clientY);// specifies the horizontal coordinate to be moved to and the vertical coordinate to be moved to
         ctx.fillStyle = "red";// default red
+      //  ctx.canvas.width  = window.innerWidth;
+      //  ctx.canvas.height = window.innerHeight;
 
     });
 
     window.addEventListener('touchstart',function(e) {
         isDrawing = true;
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
         ctx.moveTo(e.clientX, e.clientY);// specifies the horizontal coordinate to be moved to and the vertical coordinate to be moved to
         ctx.fillStyle = "red";// default red
+        console.log("executing")
 
     });
 
     window.addEventListener('mousemove', function(e) {
      if (isDrawing) { // checks if isDrawing is true, mouse is pressed
+       // ctx.canvas.width  = window.innerWidth;
+       // ctx.canvas.height = window.innerHeight;
         ctx.beginPath()
         ctx.fill(); //fills the current drawing path
         ctx.fillRect(e.clientX, e.clientY, width, width);//40 width by 40 height pixels
@@ -61,10 +70,13 @@
          
     });
        window.addEventListener('touchmove', function(e) {
+
      if (isDrawing) { // checks if isDrawing is true, mouse is pressed
         ctx.beginPath()
         ctx.fill(); //fills the current drawing path
         ctx.fillRect(e.clientX, e.clientY, width, width);//40 width by 40 height pixels
+        console.log(e)
+        
 
          }
          
